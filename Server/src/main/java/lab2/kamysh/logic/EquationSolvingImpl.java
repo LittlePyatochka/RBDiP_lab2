@@ -30,7 +30,7 @@ public class EquationSolvingImpl implements EquationSolver {
                 return null;
         }
 
-        FileHelper.saveSolution(solution);
+        //FileHelper.saveSolution(solution);
 
         return solution;
     }
