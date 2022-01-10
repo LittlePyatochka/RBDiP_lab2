@@ -1,17 +1,19 @@
 package lab2.kamysh.logic;
 
+import lab2.kamysh.entity.SessionFactoryBuilder;
+import lab2.kamysh.entity.Solution;
 import lab2.kamysh.equations.SimpleEquation;
 import lab2.kamysh.equations.SquareEquation;
-import lab2.kamysh.utils.FileHelper;
 import lab2.kamysh.utils.ServerCode;
+import org.hibernate.SessionFactory;
 
-import java.io.IOException;
+import javax.persistence.EntityManager;
 
 
 public class EquationSolvingImpl implements EquationSolver {
 
     @Override
-    public String solveEquation(int equationType, int[] params) throws IOException {
+    public String solveEquation(int equationType, int[] params, String login) {
 
         String solution;
 
@@ -30,9 +32,21 @@ public class EquationSolvingImpl implements EquationSolver {
                 return null;
         }
 
-        //FileHelper.saveSolution(solution);
+        saveSolution(solution, login);
 
         return solution;
+    }
+
+    private void saveSolution(String solutionText, String login){
+        Solution solution = Solution.builder()
+                .solution(solutionText)
+                .user(UserHandler.getUserByLogin(login))
+                .build();
+        SessionFactory sessionFactory = SessionFactoryBuilder.getSessionFactory();
+        EntityManager em = sessionFactory.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(solution);
+        em.getTransaction().commit();
     }
 
 }

@@ -5,6 +5,6 @@ import java.rmi.Remote;
 
 public interface EquationSolver extends Remote {
 
-    String solveEquation(int equationType, int[] params) throws IOException;
+    String solveEquation(int equationType, int[] params, String login) throws IOException;
 
 }

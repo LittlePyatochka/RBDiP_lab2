@@ -9,12 +9,12 @@ import lab2.kamysh.entity.User;
 @Builder
 public class UserDto {
     private Integer id;
-    private String name;
+    private String login;
     private String password;
 
     public UserDto(User user) {
         this.id = user.getId();
-        this.name = user.getName();
+        this.login = user.getLogin();
         this.password = user.getPassword();
     }
 }

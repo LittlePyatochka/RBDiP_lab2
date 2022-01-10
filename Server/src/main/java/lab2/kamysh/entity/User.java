@@ -7,7 +7,7 @@ import javax.persistence.*;
 import lab2.kamysh.errors.ErrorMessage;
 import javax.validation.constraints.NotBlank;
 
-@Entity(name = "user")
+@Entity(name = "s_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,9 +21,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "login", nullable = false)
     @NotBlank(message = ErrorMessage.NOT_BLANK)
-    private String name;
+    private String login;
 
     @Column(name = "password", nullable = false)
     @NotBlank(message = ErrorMessage.NOT_BLANK)

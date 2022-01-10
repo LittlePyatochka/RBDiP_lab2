@@ -22,10 +22,10 @@ public class Solution {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "Solution", nullable = false)
+    @Column(name = "solution", nullable = false)
     @NotBlank(message = ErrorMessage.NOT_BLANK)
     private String solution;
 
